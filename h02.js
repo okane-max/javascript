@@ -1,5 +1,5 @@
 
-// Harjutus 10
+// Harjutus 09
 //  Klassikaline funktsioon
 function teremaailm(nimi) {
     console.log("Tere "+nimi)
@@ -44,9 +44,9 @@ salajaneSonum = (sonum) => {
         if (taishaalikud.includes(taht.toLowerCase())) {
             taht = "*"
         }
-        uus_sona = uus_sona.concat(taht)
+        uus_sona += taht
     }
     console.log(uus_sona)
 }
 
-salajaneSonum("ValguskiirUs")
+salajaneSonum("ValguskiirUs2")
