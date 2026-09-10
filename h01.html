@@ -9,6 +9,7 @@
     
 </body>
 <script>
+
     // Harjutus 08
     //      Mündid
     let counter = 0;
@@ -138,6 +139,140 @@
     console.log(typeof FALSE);
     console.log(typeof 'true');
     console.log(typeof undefined);
+
+    // skriptimine
+    function nimi() {
+    console.log("Hirmus tont")
+    }
+
+    const nimi2 = () => {
+        console.log("oi kui hirmus")
+    }
+
+    nimi()
+    nimi2()
+
+    const kuupaevEesti = () => {
+    const options = {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+    }
+    
+    today = new Date;
+    console.log(today.toLocaleDateString("et-EE", "options"))
+    }
+
+    kuupaevEesti()
+
+    const kokku = (...nr) => {
+        summa = 0
+        
+        nr.forEach(e => {
+            summa+=e
+        });
+        keskmine = summa/nr.length
+        console.log(summa, keskmine)
+    }
+    kokku(404,101,111)
+
+
+    let toode = {
+    nimetus:"leib",
+    hind:"0.89",
+    kogus:"16",
+
+    Koguhind: function() {
+        return this.hind*this.kogus;
+    },
+
+    Muudakogust: function(muutus) {
+        return this.kogus = muutus;
+    },
+
+    Objektisisu: function() {
+        return `Toode: ${this.nimetus}\nHind: ${this.hind}€\nKogus: ${this.kogus}
+        `
+    }
+    }
+
+    console.log(toode)
+    console.log("Koguhind: "+ toode.Koguhind())
+    console.log(toode.Muudakogust(101))
+    console.log(toode.Objektisisu())
+
+
+    // Ostukorv
+    const ostukorv = {
+    tooted: [
+        { nimi:'Piim', hind:3.60, kogus:2 },
+        { nimi:'Leib', hind:2.00, kogus:1 },
+        { nimi:'Munad', hind:1.50, kogus:6 },
+        { nimi:'Juust', hind:4.20, kogus:1 },
+        { nimi:'Tomatid', hind:2.30, kogus:3 },   
+        ],
+
+        Kuvasisu: function() {
+            this.tooted.forEach(toode => {
+            console.log(`${toode.nimi} - ${toode.hind} EUR - Kogus: ${toode.kogus}`);
+            })
+        },
+
+        LisaToode: function(nimi,hind,kogus) {
+            this.tooted.push({ nimi: nimi, hind: hind, kogus: kogus });
+        },
+
+        KoguSumma: function() {
+            summa = 0
+            this.tooted.forEach(toode => {
+                summa+=(toode.kogus*toode.hind)
+            })
+            console.log('Ostukorvi kogu summa:', summa, 'EUR');
+        },
+    }
+    ostukorv.LisaToode('Kohv', 5.80, 2);
+    ostukorv.Kuvasisu()
+    ostukorv.KoguSumma()
+    
+    // Nimed
+    const nimed = ["mari maasikas", "jaan jõesaar", "kristiina kukk", "margus magus mustikas", "jaak järve", "kadi kask", "Toomas Tamm", "Kadi Meri", "Leena Laas", "Madis Mets", "Hannes Hõbe", "Anu Allikas", "Kristjan Käär", "Eva Esimene", "Jüri Jõgi", "Liis Lepik", "Kalle Kask", "Tiina Teder", "Kaidi Koppel", "tiina Toom"];
+    
+    function capitalize(text) {
+        return String(text).charAt(0).toUpperCase() + String(text).slice(1);
+    }
+
+    function anticapitalize(text) {
+        return String(text).charAt(0).toLowerCase() + String(text).slice(1);
+    }
+
+    function otsing(masiiv ,otsitav) {
+        masiiv.forEach(nimi => {
+            if ((nimi.toLowerCase()).includes(otsitav.toLowerCase())) {
+                console.log(nimi)
+            } 
+        });
+    }
+    
+    nimed.forEach(nimi => {
+        console.log(capitalize(nimi))
+        console.log(anticapitalize((String(nimi).slice(nimi.lastIndexOf(" ")).trim())+ "@metshein.com"));
+    });
+    otsing(nimed, "Kadi")
+
+    // Sünniaeg ja vanus
+    const inimesteAndmed = [
+    { nimi: "Mari Maasikas", isikukood: "38705123568" },
+    { nimi: "Jaan Jõesaar", isikukood: "49811234567" },
+    { nimi: "Kristiina Kukk", isikukood: "39203029876" },
+    { nimi: "Margus Mustikas", isikukood: "49807010346" },
+    { nimi: "Jaak Järve", isikukood: "39504234985" },
+    { nimi: "Kadi Kask", isikukood: "39811136789" },
+    ];
+    inimesteAndmed.forEach(inimene => {
+        console.log(inimene.isikukood[5]+inimene.isikukood[6]+"."+inimene.isikukood[3]+inimene.isikukood[4]+"."+inimene.isikukood[1]+inimene.isikukood[2])
+    })
+
+
 
 </script>
 </html>
